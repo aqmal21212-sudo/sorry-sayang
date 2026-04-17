@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Sayang ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+    text-align: center;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Pages */
+.page {
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+}
+
+.active {
+    display: flex;
+}
+
+/* Text */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+p {
+    max-width: 650px;
+    line-height: 1.7;
+    font-size: 16px;
+    z-index: 2;
+}
+
+/* Buttons */
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#continueBtn {
+    background-color: #ff6b81;
+    color: white;
+}
+
+#exitBtn {
+    background-color: #ccc;
+    position: relative;
+}
+
+#forgiveBtn {
+    background-color: #ff4757;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Floating image bubbles */
+.bubble {
+    position: absolute;
+    top: -150px;
+    width: 120px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 24px;
+    animation: floatUp 4s linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-150px) scale(0.8);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+    <h1>Hi sayang, sorry i amik masa you sekejap je okayy</h1>
+    <div>
+        <button id="continueBtn" onclick="nextPage()">Continue ❤️</button>
+        <button id="exitBtn" onmouseover="moveButton()">Exit</button>
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+    <h1>For My Sayang 💖</h1>
+
+    <p>
+        Hi sayang… i nak minta maaf untuk selama kita kenal ni.  
+        I sedar i banyak janji dengan you dulu, tapi tak semua i buat.  
+        I tahu benda tu buat you terasa, kecewa and you lowered your expectations to me sayang sebab i keep on repeating benda sama… and it really hits me bila i fikir balik.
+        <br><br>
+        Start from today, i nak berubah. I nak jadi Aqmal yang you boleh percaya, yang you can rely on when you need sayang someone yang stick with every single word he said.  
+        Apa saja i cakap, i akan buat — no more empty promises.
+        <br><br>
+        I taknak kehilangan sayang you even sikit pun.  
+        I nak sayang kita makin kuat every day until one day kita kahwin and that love keep grow sampai bila bilaa.
+        <br><br>
+        I nak cakap thank you juga sebab buka mata i dan sedarkan i. That feeling bila i rasa you dah kurang sayang i, itu yang push i untuk jadi better person and berubah untuk you sayang.
+        <br><br>
+        And today… i start something serious.  
+        I stop vaping.  
+        Kali ni i betul-betul nak buat and prove dekat you how serious i am even right now when i write this coding nafas i still struggle.
+        <br><br>
+        Lastly… this coding i buat khas untuk you.  
+        I tahu you rindu i buat benda macam ni, and i try jugak walaupun dah lupa sikit-sikit.
+        <br><br>
+        I love you so much, myfizaaa ❤️  
+        My pretty princess 👑
+    </p>
+
+    <button id="forgiveBtn" onclick="showHearts()">
+        Can you forgive me and give me a chance? ❤️
+    </button>
+</div>
+
+<script>
+function nextPage() {
+    document.getElementById("page1").classList.remove("active");
+    document.getElementById("page2").classList.add("active");
+    createBubbles();
+}
+
+function moveButton() {
+    const btn = document.getElementById("exitBtn");
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+
+    btn.style.position = "absolute";
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+}
+
+/* Floating image bubbles */
+function createBubbles() {
+    for (let i = 0; i < 15; i++) {
+        let img = document.createElement("img");
+        img.src = "gf1.jpg";
+        img.classList.add("bubble");
+
+        img.style.left = Math.random() * 100 + "vw";
+        img.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+        document.getElementById("page2").appendChild(img);
+    }
+}
+
+/* Hearts + WhatsApp redirect */
+function showHearts() {
+    // hearts animation
+    for (let i = 0; i < 30; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.classList.add("heart");
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+
+    // WhatsApp redirect with message
+    setTimeout(() => {
+        window.location.href = "https://wa.me/60126247107?text=i%20forgive%20you%20baby%20%E2%9D%A4%EF%B8%8F%E2%9D%A4%EF%B8%8F";
+    }, 1500);
+}
+</script>
+
+</body>
+</html>
